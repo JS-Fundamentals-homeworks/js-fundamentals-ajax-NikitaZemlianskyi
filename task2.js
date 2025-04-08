@@ -5,3 +5,15 @@
 // відобразити у тезі #userCity
 // Запустити програму потрібно за допомогою Live Server
 // Перевірити правильність програми - команда node tests/task2.test.js
+
+const usersURL = 'https://jsonplaceholder.typicode.com/users';
+
+getUserButton.addEventListener('click', function () {
+    fetch(usersURL)
+        .then(res => res.json())
+        .then(users => {
+            const user = users.find(usr => usr.name === userNameInput.value);
+            userCity.innerHTML = user.address.city;
+        });
+});
+
